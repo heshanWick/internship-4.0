@@ -40,10 +40,10 @@ public class ArrayAdderTest {
         arrayAdder.setSecondArray(sampleArray2);
         ArrayList<Integer> sample = new ArrayList<>();
 
-        for(int i = 0 ; i < sampleArray1.size() ; i++)
-        {
-            sample.add(sampleArray1.get(i) + sampleArray2.get(i));
-        }
+//        for(int i = 0 ; i < sampleArray1.size() ; i++)
+//        {
+//            sample.add(sampleArray1.get(i) + sampleArray2.get(i));
+//        }
 
         ArrayList<Integer> actual = arrayAdder.getNewArray();
         Assert.assertArrayEquals(sample.toArray(), actual.toArray());
