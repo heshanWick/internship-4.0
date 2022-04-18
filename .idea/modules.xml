@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ex01-arrayAdder/ex01-arrayAdder.iml" filepath="$PROJECT_DIR$/ex01-arrayAdder/ex01-arrayAdder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex02-simpleScript/ex02-simpleScript.iml" filepath="$PROJECT_DIR$/ex02-simpleScript/ex02-simpleScript.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/internship-v4-exercises.iml" filepath="$PROJECT_DIR$/.idea/internship-v4-exercises.iml" />
     </modules>
   </component>

@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ex02-simpleScript" />
         <module name="ex01-arrayAdder" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ex01-arrayAdder" target="11" />
+      <module name="ex02-simpleScript" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
