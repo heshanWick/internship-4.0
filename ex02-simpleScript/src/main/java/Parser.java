@@ -4,7 +4,7 @@ public class Parser
 {
     private final ArrayList<String[]> tokens = new ArrayList<>();
 
-    public Parser(String text){
+    public void setTokens(String text){
         String[] tokenSets = text.split("\\|");
 
         if(tokenSets.length > 0)

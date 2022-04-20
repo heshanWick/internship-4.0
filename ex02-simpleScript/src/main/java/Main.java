@@ -6,10 +6,29 @@ public class Main
 {
     public static void main(String[] args){
         System.out.println("//////////////////////////////////////////");
+        System.out.println("SIMC");
+        System.out.println("-----");
+
         String data =  readFile("ex02-simpleScript/src/firstScript.simc");
-        Parser parser = new Parser(data);  
-        Interpreter interpreter = new Interpreter(parser.getTokens());
+        Parser parser = new Parser();
+        Interpreter interpreter = new Interpreter();
+
+        parser.setTokens(data);
+        interpreter.setPassedTokenSets(parser.getTokens());
         interpreter.interpret();
+
+//        boolean replActive = true;
+//        Scanner scanner = new Scanner(System.in);
+//        String userInput;
+//
+//        //REPL
+//        while(replActive){
+//            userInput = scanner.nextLine();
+//            if(userInput.equals("exit")) replActive = false;
+//            else{
+//                System.out.println(userInput);
+//            }
+//        }
     }
 
     //Read from a file
@@ -19,7 +38,6 @@ public class Main
 
         try {
             File file = new File(filePath);
-            System.out.println(file.getAbsolutePath());
             Scanner scanner = new Scanner(file);
             String temp;
 
