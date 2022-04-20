@@ -7,9 +7,7 @@ public abstract class Command {
         return variable.matches(VARIABLE_PATTERN);
     }
 
-    public int getTokenIndex() {
-        return 0;
-    }
+    public int getTokenIndex() { return 0; }
 
     public int getVariableNameIndex() {
         return 1;

@@ -5,30 +5,34 @@ import java.util.Scanner;
 public class Main
 {
     public static void main(String[] args){
+        Parser parser = new Parser();
+        Interpreter interpreter = new Interpreter();
+
         System.out.println("//////////////////////////////////////////");
         System.out.println("SIMC");
         System.out.println("-----");
 
-        String data =  readFile("ex02-simpleScript/src/firstScript.simc");
-        Parser parser = new Parser();
-        Interpreter interpreter = new Interpreter();
+//        String data =  readFile("ex02-simpleScript/src/firstScript.simc");
+//        parser.setTokens(data);
+//        interpreter.setPassedTokenSets(parser.getTokens());
+//        interpreter.interpret();
 
-        parser.setTokens(data);
-        interpreter.setPassedTokenSets(parser.getTokens());
-        interpreter.interpret();
+        boolean isReplActive = true;
+        boolean isFile = false;
+        Scanner scanner = new Scanner(System.in);
+        String userInput;
 
-//        boolean replActive = true;
-//        Scanner scanner = new Scanner(System.in);
-//        String userInput;
-//
-//        //REPL
-//        while(replActive){
-//            userInput = scanner.nextLine();
-//            if(userInput.equals("exit")) replActive = false;
-//            else{
-//                System.out.println(userInput);
-//            }
-//        }
+        //REPL
+        while(isReplActive){
+            userInput = scanner.nextLine();
+            //Typing exit to exit repl
+            if(userInput.equals("exit")) isReplActive = false;
+            else{
+                parser.setTokens(userInput);
+                interpreter.setPassedTokenSets(parser.getTokens());
+                interpreter.interpret(isFile);
+            }
+        }
     }
 
     //Read from a file

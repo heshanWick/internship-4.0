@@ -10,12 +10,14 @@ public class Interpreter
         this.passedTokenSets = passedTokenSets;
     }
 
-    public void interpret(){
+    public void interpret(boolean isFile){
         boolean isSyntaxError = false;
         String[] currentSet;
 
         for (String[] passedToken : this.passedTokenSets) {
             currentSet = passedToken;
+
+            if(!isFile) this.showCommand.getShowTokens().clear();
 
             //Getting Save Token Values
             if(this.saveCommand.isSaveCommand(currentSet)){
@@ -32,37 +34,26 @@ public class Interpreter
             }
         }
 
-        try {
-            displayOutput(isSyntaxError);
-        } catch (ScriptException e) {
-            e.printStackTrace();
-        }
+        displayOutput(isSyntaxError);
+
+        this.passedTokenSets.clear();
     }
 
-    //Displaying output to the user
-    public void displayOutput(boolean isSyntaxError) throws ScriptException {
+    //.simc out put Displaying output to the user
+    public void displayOutput(boolean isSyntaxError) {
         if(isSyntaxError){
-            throw new ScriptException("syntax error");
+            System.out.println("Syntax Error");
         }
         else{
-            System.out.println("SHOW Tokens");
             for(Character c : showCommand.getShowTokens()){
                 if(!this.saveCommand.getSaveTokens().containsKey(c)){
-                    throw new ScriptException("undeclared variable : " + c);
+                    System.out.println("Undeclared Variable : " + c);
                 }
                 else if(this.saveCommand.getSaveTokens().get(c) == null)
-                    throw new ScriptException("invalid value");
+                    System.out.println("invalid value");
                 else
                     System.out.println(this.saveCommand.getSaveTokens().get(c));
             }
-        }
-    }
-
-    //Inner class for exceptions
-    private static class ScriptException extends Exception
-    {
-        public ScriptException(String message) {
-            super(message);
         }
     }
 }
