@@ -24,11 +24,18 @@ public class Main
 
         //REPL
         while(isReplActive){
+            isFile = false;
             userInput = scanner.nextLine();
             //Typing exit to exit repl
             if(userInput.equals("exit")) isReplActive = false;
             else{
                 parser.setTokens(userInput);
+
+                if(parser.getTokens().get(0)[0].equals("simc")) {
+                    isFile = true;
+                    parser.setTokens(readFile(parser.getTokens().get(0)[1]));
+                };
+
                 interpreter.setPassedTokenSets(parser.getTokens());
                 interpreter.interpret(isFile);
             }
@@ -36,12 +43,13 @@ public class Main
     }
 
     //Read from a file
-    public static String readFile(String filePath)
+    private static String readFile(String fileName)
     {
+        String formattedFilePath = "ex02-simpleScript/src/" + fileName;
         StringBuilder data = new StringBuilder();
 
         try {
-            File file = new File(filePath);
+            File file = new File(formattedFilePath);
             Scanner scanner = new Scanner(file);
             String temp;
 

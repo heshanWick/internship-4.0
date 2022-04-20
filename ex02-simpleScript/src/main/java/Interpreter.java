@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Interpreter
 {
@@ -7,6 +10,7 @@ public class Interpreter
     private final ShowCommand showCommand = new ShowCommand();
 
     public void setPassedTokenSets(ArrayList<String[]> passedTokenSets){
+        //this.passedTokenSets.clear();
         this.passedTokenSets = passedTokenSets;
     }
 
@@ -16,7 +20,6 @@ public class Interpreter
 
         for (String[] passedToken : this.passedTokenSets) {
             currentSet = passedToken;
-
             if(!isFile) this.showCommand.getShowTokens().clear();
 
             //Getting Save Token Values

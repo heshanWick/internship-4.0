@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Parser
@@ -5,6 +7,7 @@ public class Parser
     private final ArrayList<String[]> tokens = new ArrayList<>();
 
     public void setTokens(String text){
+        this.tokens.clear();
         String[] tokenSets = text.split("\\|");
 
         if(tokenSets.length > 0)
