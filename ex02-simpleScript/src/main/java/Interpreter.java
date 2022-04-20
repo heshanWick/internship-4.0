@@ -1,8 +1,9 @@
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
+/**
+ * Class representing an Interpreter.
+ * Also displays Output to the user
+ * */
 public class Interpreter
 {
     private ArrayList<String[]> passedTokenSets;
@@ -10,7 +11,6 @@ public class Interpreter
     private final ShowCommand showCommand = new ShowCommand();
 
     public void setPassedTokenSets(ArrayList<String[]> passedTokenSets){
-        //this.passedTokenSets.clear();
         this.passedTokenSets = passedTokenSets;
     }
 
@@ -20,13 +20,15 @@ public class Interpreter
 
         for (String[] passedToken : this.passedTokenSets) {
             currentSet = passedToken;
+
+            //Clearing Previous Show commands if not reading from a .simc file
             if(!isFile) this.showCommand.getShowTokens().clear();
 
-            //Getting Save Token Values
+            //Adding Save Token Values
             if(this.saveCommand.isSaveCommand(currentSet)){
                 this.saveCommand.addToken(currentSet);
             }
-            //Getting SHOW token Values
+            //Adding SHOW token Values
             else if(showCommand.isShowCommand(currentSet)){
                 this.showCommand.addToken(currentSet);
             }
@@ -37,25 +39,29 @@ public class Interpreter
             }
         }
 
+        //Displaying output to user
         displayOutput(isSyntaxError);
 
+        //Clearing current Data for next iteration
         this.passedTokenSets.clear();
+        this.showCommand.getShowTokens().clear();
     }
 
-    //.simc out put Displaying output to the user
+    // Function for displaying Error or Command outputs to user
+    //////////////////////////////////////////////////////////////
     public void displayOutput(boolean isSyntaxError) {
         if(isSyntaxError){
-            System.out.println("Syntax Error");
+            System.out.println("<- Syntax Error");
         }
         else{
             for(Character c : showCommand.getShowTokens()){
                 if(!this.saveCommand.getSaveTokens().containsKey(c)){
-                    System.out.println("Undeclared Variable : " + c);
+                    System.out.println("<- Undeclared Variable : " + c);
                 }
                 else if(this.saveCommand.getSaveTokens().get(c) == null)
-                    System.out.println("invalid value");
+                    System.out.println("<- Invalid Value");
                 else
-                    System.out.println(this.saveCommand.getSaveTokens().get(c));
+                    System.out.println("<- " + this.saveCommand.getSaveTokens().get(c));
             }
         }
     }
