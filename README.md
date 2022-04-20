@@ -17,4 +17,7 @@ ex02-simpleScript
 - It has only 2 tokens: "SHOW" and "SAVE"
 - "SHOW" syntax : SHOW <variablename>. Eg: SHOW A .. SHOW B .. Variable is always an English letter.
 - "SAVE" syntax: SAVE <variablename> <number> ..EG: SAVE B 10
+  
+https://user-images.githubusercontent.com/87760577/164170571-03ffd3fe-3d46-41f7-a363-92cb2a94223c.mp4
+
 
