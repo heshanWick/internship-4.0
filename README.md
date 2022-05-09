@@ -19,5 +19,8 @@ ex02-simpleScript
 - "SAVE" syntax: SAVE <variablename> <number> ..EG: SAVE B 10
   
 https://user-images.githubusercontent.com/87760577/164170571-03ffd3fe-3d46-41f7-a363-92cb2a94223c.mp4
+  
+![image](https://user-images.githubusercontent.com/87760577/167340077-821e2b15-7219-4298-8f63-33876bb61834.png)
+
 
 
