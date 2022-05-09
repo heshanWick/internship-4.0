@@ -31,4 +31,9 @@ jobs:
         run: |
           cd ex01-arrayAdder
           mvn --batch-mode --update-snapshots verify
+
+      - name: Step 05 - Build and Test ex02-simpleScript with Maven
+          run: |
+            cd ex02-simpleScript
+            mvn --batch-mode --update-snapshots verify
           
